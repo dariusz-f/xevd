@@ -22,7 +22,7 @@ jobs:
         with:
           style: 'file'  # Use .clang-format config file. 
           tidy-checks: 'bugprone-*,' # Use .clang-tidy config file. 
-          repo-root: ${{GITHUB_WORKSPACE}}
+          repo-root: ${{ github.workspace }}
           version: '18'
           verbosity: 'debug'
           lines-changed-only: 'true'
