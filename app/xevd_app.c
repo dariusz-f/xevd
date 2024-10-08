@@ -35,16 +35,16 @@
 
 #define MAX_BS_BUF                 16*1024*1024 /* byte */
 
-static void print_usage(void)
-{
-    int i;
+static void print_usage(void){
+    int  i;
     char str[1024];
 
     logv0("< Usage >\n");
 
-    for(i=0; i<XEVD_NUM_ARG_OPTION; i++)
+    for( i=0; i<XEVD_NUM_ARG_OPTION; i++)
     {
-        if(xevd_args_get_help(options, i, str) < 0) return;
+        if(xevd_args_get_help(options, i, str) < 0) 
+           return;
         logv0("%s\n", str);
     }
 }
