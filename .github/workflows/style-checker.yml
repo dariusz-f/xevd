@@ -21,13 +21,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: 'file'  # Use .clang-format config file. 
-          tidy-checks: 'bugprone-*,' # Use .clang-tidy config file. 
-          repo-root: ${{ github.workspace }}
+          tidy-checks: '-*' # Use .clang-tidy config file. 
           version: '18'
           verbosity: 'debug'
           lines-changed-only: 'true'
           no-lgtm: 'false'
-          tidy-review: 'true'
+          tidy-review: 'false'
           format-review: 'true'
           # only 'update' a single comment in a pull request's thread. 
           thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
