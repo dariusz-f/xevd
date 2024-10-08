@@ -28,25 +28,23 @@
    POSSIBILITY OF SUCH DAMAGE.
 */
 
-
+#include "xevd_app_args.h"
 #include "xevd.h"
 #include "xevd_app_util.h"
-#include "xevd_app_args.h"
+
 
 #define MAX_BS_BUF                 16*1024*1024 /* byte */
 
-static void print_usage(void)
-{
-    int i;
+static void print_usage(void){
+    int   i;
     char str[1024];
 
     logv0("< Usage >\n");
 
     for(i=0; i<XEVD_NUM_ARG_OPTION; i++)
     {
-        if(xevd_args_get_help(options, i, str) < 0) return;
-        logv0("%s\n", str);
-    }
+        if (xevd_args_get_help(options, i, str) < 0) return;
+        logv0("%s\n", str);}
 }
 
 static int read_bitstream(FILE * fp, int * pos, unsigned char * bs_buf)
@@ -55,11 +53,10 @@ static int read_bitstream(FILE * fp, int * pos, unsigned char * bs_buf)
     unsigned char nalu_len_buf[4], b = 0;
     XEVD_INFO info;
 
-    bs_size = 0;
+    bs_size   = 0;
     read_size = 0;
 
-    if(!fseek(fp, *pos, SEEK_SET))
-    {
+    if(!fseek(fp, *pos, SEEK_SET)) {
         /* read size first */
         if(XEVD_NAL_UNIT_LENGTH_BYTE == fread(nalu_len_buf, 1, XEVD_NAL_UNIT_LENGTH_BYTE, fp))
         {
@@ -70,8 +67,7 @@ static int read_bitstream(FILE * fp, int * pos, unsigned char * bs_buf)
             }
             bs_size = info.nalu_len;
 
-            if(bs_size <= 0)
-            {
+            if(bs_size <= 0){
                 logv0("Invalid bitstream size![%d]\n", bs_size);
                 return XEVD_ERR;
             }
