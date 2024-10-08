@@ -35,13 +35,10 @@
 
 #define MAX_BS_BUF                 16*1024*1024 /* byte */
 
-static void print_usage(void
-) {
-
-   
-   
-   int i;
-    char str [1024];
+static void print_usage(void)
+{
+    int  i;
+    char str[1024];
 
     logv0("< Usage >\n");
 
